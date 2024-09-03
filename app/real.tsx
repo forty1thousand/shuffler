@@ -6,7 +6,7 @@ import { LocalState } from "@/app/c/localstate";
 import { Modal } from "@/app/c/modal";
 import { Paper } from "@/app/c/paper";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { twJoin, twMerge } from "tailwind-merge";
 
 type Preset = [string, string[]];
@@ -37,6 +37,10 @@ export default function () {
 
     return res;
   }
+
+  useEffect(() => {
+    setGroups((groups) => Math.min(groups, activePreset?.[1].length ?? 1));
+  }, [activePreset]);
 
   return (
     <main className="w-screen min-h-screen p-4 grid place-items-center">
@@ -268,7 +272,7 @@ export default function () {
             max={activePreset?.[1].length ?? 1}
             className="w-[48px] ml-4"
             value={`${groups}`}
-            onChange={(e) => setGroups(Number(e.currentTarget.value))}
+            onChange={(e) => setGroups(Number(e.currentTarget.value) || 1)}
           />
           {activePreset && (
             <div className="flex flex-wrap gap-4 m-4">
