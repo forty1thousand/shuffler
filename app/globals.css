@@ -3,25 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  color-scheme: light;
+  --background: 255 255 255;
+  --subtle: 125 125 127;
+  --muted: 177 177 178;
+  --faint: 230 230 231;
+  --primary: 0 0 0;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    color-scheme: dark;
+    --background: 9 11 9;
+    --subtle: 153 156 154;
+    --muted: 70 71 71;
+    --faint: 28 29 28;
+    --primary: 255 255 255;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
 }
